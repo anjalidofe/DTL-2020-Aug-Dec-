@@ -1,0 +1,54 @@
+#!/bin/bash
+echo "String Operations"
+i="y"
+echo "enter first string"
+read st1
+echo "enter second string"
+read st2
+while [ $i = "y" ]
+do
+echo "1.Compare strings"
+echo "2.Check if strings are equal"
+echo "3.Check if strings are empty or not"
+echo "4.Concat"
+echo "5.Length of first string" 
+echo "6.Length of second string"
+echo "7.Reverse first string"
+echo "8.Reverse Second string"
+echo "Enter choice"
+read ch
+case $ch in
+
+1)if [ $st1 \> $st2 ] 
+then 
+  echo "$st2 is greater then $st1" 
+else
+  echo "$st1 is less then $st2" 
+fi ;;
+2)if [ $st1 = $st2 ]
+then 
+  echo "Both string are same"
+else
+  echo "Both string are not same"
+fi ;;
+3)if [ -n $st1 ] 
+then 
+  echo "String is not empty" 
+else
+  echo "String is empty"
+fi ;;
+4)c="${st1} ${st2}"
+echo "${c}";;
+5)echo ${#st1};;
+6)echo ${#st2};;
+7)echo ${st1} | rev;;
+8)echo ${st2} | rev;;
+*)echo "invalid choice"
+esac
+echo "Do you want to continue"
+read i
+if [ $i != "y" ]
+then
+exit
+fi
+done
