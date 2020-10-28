@@ -1,0 +1,43 @@
+# Sorting the array in Bash  
+# using Bubble sort 
+  
+# Static input of Array 
+arr=(10 8 20 100 12) 
+  
+echo "Array in original order"
+echo ${arr[*]} 
+  
+# Performing Bubble sort  
+for ((i = 0; i<5; i++)) 
+do
+      
+    for((j = 0; j<5-i-1; j++)) 
+    do
+      
+        if [ ${arr[j]} -gt ${arr[$((j+1))]} ] 
+        then
+            # swap 
+            temp=${arr[j]} 
+            arr[$j]=${arr[$((j+1))]}   
+            arr[$((j+1))]=$temp 
+        fi
+    done
+done
+  
+echo "Array in sorted order :"
+echo ${arr[*]}
+
+
+-----------+++-----------
+Example:
+First Pass:
+( 5 1 4 2 8 ) –> ( 1 5 4 2 8 ), Here, algorithm compares the first two elements, and swaps since 5 > 1.
+( 1 5 4 2 8 ) –>  ( 1 4 5 2 8 ), Swap since 5 > 4
+( 1 4 5 2 8 ) –>  ( 1 4 2 5 8 ), Swap since 5 > 2
+( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ), Now, since these elements are already in order (8 > 5), algorithm does not swap them.
+
+Second Pass:
+( 1 4 2 5 8 ) –> ( 1 4 2 5 8 )
+( 1 4 2 5 8 ) –> ( 1 2 4 5 8 ), Swap since 4 > 2
+( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )
+( 1 2 4 5 8 ) –>  ( 1 2 4 5 8 )
